@@ -1,0 +1,53 @@
+
+.heading{
+
+    
+ margin-left: 5%;
+ margin-top: 3%;
+ color: rgb(164, 135, 165);
+}
+
+.courses{
+    margin-left: 5%;
+}
+.subjects{
+    /* padding-right: 200px; */
+    border-radius: 3px;
+    border: 1px solid silver;
+    background-color: white;
+    padding-bottom: 30px;    
+}
+
+.maths{
+    margin-left: 9%;
+    font-size: 17px;
+   
+}
+.maths a:link{
+    color:rgb(164, 135, 165);
+}
+
+.heading_math{
+    
+    
+    margin-left: 9%;
+}
+
+.secondfooter{
+    height: 100px;
+    /* width: 100%; */
+    background-color: rgb(68, 188, 195)
+}
+.footer1{
+    color:white;
+    margin-top: 18px;
+}
+.btn_signup{
+   border: none;
+    margin-top:  20px;
+ height:45px;
+    width: 150px;
+    border-radius: 07px;
+    background-color: white;
+    color:black;
+}

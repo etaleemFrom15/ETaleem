@@ -1,0 +1,152 @@
+body{
+    background-color: white !important
+}
+
+.SprofileCart{
+    margin-top: 7%;
+    width:90%;
+    height: 320px;
+    border: 2px solid pink ;
+    border-radius: 5px;
+ margin-bottom: 3%;
+    /* background-color: white ! important; */
+}
+.Simage{
+    margin-left: 15px;
+ margin-top: 04%;
+    height: 200px;
+    width: 200px;
+    border-radius:50%;
+}
+
+.Sbadge{
+    margin-left: 50px;
+ border-radius: 10px;
+    /* box-sizing: content-box; */
+   margin-top: 10%; 
+   /* padding-left: 100px;  */
+   height: 8%;
+  
+
+   width: 43%;
+    background-color: lightblue;
+    border: 1px solid darkcyan;
+}
+.Stwo{
+    margin-left: 10%;
+    font-size: 40px;
+    color:white;
+    /* vertical-align: top; */
+display: inline-block;
+}
+.Sthree{
+    margin-left: 10px;
+    font-size: 14px;
+    /* font-size-adjust: inherit; */
+    color:white;
+    /* margin-top: 14px; */
+    /* vertical-align: text-middle; */
+    display: inline-block;
+}
+.SsecondDiv{
+    /* margin-left: 90px; */
+    /* padding-left: 20px; */
+    border-left:1px solid lightblue;
+    border-right:1px solid lightblue ;
+    /* border-bottom: 2px solid red; */
+    height: 54.5%;
+    /* padding-right: 999px; */
+    width: 855px;
+}
+
+.SratingStars{
+    margin-top: 3%;
+margin-left: 300px;
+    font-size: 30px;
+    display: inline-block;
+    color: orange;
+}
+.Sname{
+    /* padding-left: 90px; */
+    display: inline-block;
+}
+.Sprofession{
+    margin-top: 1%;
+    color:silver;
+    display: inline-block;
+}
+.Ssubject{
+    /* margin-top: 901px; */
+    font-size: 20px;
+}
+.subject{
+    margin-top: 4%;
+}
+.Sclass{
+    color:silver;
+}
+.Sinfo{
+    color:silver;
+}
+.Sreview{
+    margin-top: 1%;
+    /* font-size: 55px; */
+    color:silver;
+    /* margin-left: 400px; */
+display: inline-block;
+}
+
+
+.Smessages{
+    margin-top: 0px;
+    
+    width:639px;
+    
+    border-top:1px solid lightblue;
+  
+}
+
+.Sreplies{
+    padding-left: 70px;
+    margin-left: 30px;
+    height: 45px;
+    width:324px;
+    /* margin-top:  */
+    /* border-right: 2px solid darkcyan; */
+display: inline-block;
+}
+.Stime{
+/* padding-top: 99px; */
+    /* margin-left: 150px; */
+    /* height: 47px; */
+    border-left: 2px solid lightblue;
+    display: inline-block;
+}
+.StimePic{
+    margin-left: 70px;
+}
+.Sten::before{
+    height: 22px;
+    width:55;
+content:url('../img/location.jpg');
+}
+.Sfourty::after{
+    color:silver;
+    font-size: 12px;
+    content:"/hour"
+}
+.overflow-visible {
+  word-wrap: break-word;
+  overflow:hidden;
+  }
+  
+.Sfourty::before{
+
+}
+.thirdDiv{
+ /* display: inline-block; */
+    /* margin-top: 3%; */
+position: relative;
+top: -280px;
+left: 350px;
+}

@@ -1,0 +1,76 @@
+.title{
+    padding-left: 20px;
+    margin-left: 150px;
+    width:820px;
+}
+#search{
+    text-indent: 10px;
+    width: 650px;
+    height:41px;
+}
+#heading{
+    margin-top:10%;  
+    font-weight: bold;
+}
+#once{
+    margin-top: 10%;
+}
+#picture1{
+    margin-top:4%;
+    margin-right: 70px;
+}
+#meet{
+    margin-top: 7%;
+}
+#simply{
+    margin-top: 5%;
+}
+#inital{
+margin-top: 30%;
+    font-weight: bold;
+    
+}
+#subject{
+color:darkcyan;
+    /* margin-top: 4%; */
+    font-size:16px;
+}
+#container2{
+    background-color:whitesmoke;
+}
+#suitsPic{
+    display: inline-block;
+}
+#suits{
+    display: inline-block;
+}
+#whiteboard{
+    display: inline-block;
+}
+#document{
+    display: inline-block;
+}
+#screen{
+    display: inline-block;
+}
+#learn{
+margin-top: 4%;
+}
+#more{   
+    margin-top: 5%;
+}
+#out{
+    color:white !important;
+    font-size: 15px;
+}
+#parents{
+    margin-top: 5%;
+}
+#find{
+    /* margin-left: 0px; */
+    /* padding-left: 0px; */
+    background-color: white 
+}
+b{
+    color: black !important;
+}

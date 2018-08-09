@@ -1,0 +1,107 @@
+#row1{
+    padding-top: 6%;
+    background-color:rgb(250, 250, 250);
+padding-bottom: 6%;
+}
+#text{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color:rgb(154, 154, 154);
+}
+
+#text4{
+    padding-top: 5%; 
+    padding-bottom: 7%;
+}
+#text2{
+    font-size: 23px;
+    padding-top: 4%;
+    color:darkcyan;
+}
+#graphic{
+ 
+padding-top: 5%;
+}
+#btn
+{
+        border-radius: 2px;
+   border-width: 00;
+    background-color: rgb(233, 23, 97);
+    color:white;
+    height: 44px;
+    width: 40%;
+}
+#boxes{
+color: white;
+    border-radius: 4px;
+    margin-left: 20px;
+    width: 210px;
+    height: 180px;
+    border: 1px solid white;
+}
+#how{
+    color:white;
+    padding-top: 5%;
+}
+#text3{
+  /* content: url('man.jpg'); */
+    opacity: 0.8;
+    height: 540px;    
+    background-image: url('man.jpg');
+}
+.lnr {
+    display: inline-block;
+    fill: currentColor;
+    width: 10em;
+    height: 5em;
+    vertical-align: -0.05em;
+  }
+
+  
+  .lnr-picture {
+    color: white;
+}
+.lnr1 {
+    display: inline-block;
+    fill: currentColor;
+    width: 10em;
+    height: 5em;
+    vertical-align: -0.05em;
+  }
+  
+  .lnr-pencil {
+    color: white;}
+    .lnr2 {
+        display: inline-block;
+        fill: currentColor;
+        width: 10em;
+        height: 5em;
+        vertical-align: -0.05em;
+      }
+      
+      .lnr-star {
+        color: white;}
+    
+        .lnr3 {
+            display: inline-block;
+            fill: currentColor;
+            width: 10em;
+            height: 5em;
+            vertical-align: -0.05em;
+          }
+          
+          .lnr-cart {
+            color: white;
+          }
+          .lnr4 {
+            display: inline-block;
+            fill: currentColor;
+            width: 10em;
+            height: 5em;
+            vertical-align: -0.05em;
+          }
+          
+          .lnr-envelope {
+            color:white;
+          }
+        
