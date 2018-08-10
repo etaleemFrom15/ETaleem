@@ -49,12 +49,13 @@ function insertRequestData(){
 	var des=$("#comment").val();
 	var u_email=$("#u_email").val();
 	var cat_id=$("#cat").val();
+	var place=$("#place").val();
 	var base_url=$("#base_url").val();
 
 
 	$.ajax({
 		method:"POST",
-		data:{"c_name":c_title,"des":des,"u_email":u_email, "cat_id":cat_id},
+		data:{"c_name":c_title,"des":des,"u_email":u_email, "cat_id":cat_id,"place":place},
 		url:base_url+"Request_Controller/send_request",
 		success:function(data){
 			if(data==0){

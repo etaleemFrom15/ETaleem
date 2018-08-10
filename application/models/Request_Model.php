@@ -15,8 +15,10 @@
 			$des=$this->input->post("des");
 			$cat_id=$this->input->post("cat_id");
 			$user_email=$_SESSION['user_email'];
+			$date=date('m,d,Y');
+			$place=$this->input->post("place");
 
-			$data=array("c_name"=>$cname,"des"=>$des,"u_email"=>$user_email,"cat_id"=>$cat_id);
+			$data=array("c_name"=>$cname,"des"=>$des,"u_email"=>$user_email,"cat_id"=>$cat_id,"date"=>$date,"place"=>$place);
 			$this->db->insert("request",$data);
 
 			//Checking it Request Inserted Succesfully or Not in DB
@@ -38,6 +40,18 @@
 	    		$result=$this->db->query($q);
 	    		return $result->row_array();
 	    	
+	    }
+
+	    //Show Request
+	    public function showRequest(){
+	    	$u_email=$_SESSION['user_email'];
+	    	$q="select * from request where u_email='$u_email'";
+	    	$res=$this->db->query($q);
+	    	if($res->num_rows()>0){
+	    		return $res->result_array();
+	    	}else{
+	    		return false;
+	    	}
 	    }
 
 	    //Add Teacher Bid of Request Course to Table
@@ -77,6 +91,36 @@
 
 	    }
 
+	    //Check if Bid Exists or Not for Specified Request Id and User email
+	    public function checkBid($req_id){
+
+	    	$u_email=$_SESSION['user_email'];
+	    	$q="select * from course_bid where req_id='$req_id' and u_email='$u_email'";
+	    	$res=$this->db->query($q);
+	    	if($res->num_rows()>0){
+	    		return true;
+	    	}
+	    	else{
+	    		return false;
+	    	}
+	    }
+
+	    //Get Course Bdi record as array
+	    public function getBids($req_id=NULL){
+	    	if($req_id==NULL){
+	    		$u_email=$_SESSION['user_email'];
+	    		$q="select * from course_bid where u_email='$u_email'";
+	    	}else{
+	    		$q="select * from course_bid c JOIN teachers t on c.u_email=t.email JOIN request r on c.req_id=r.id having c.req_id='$req_id'";
+	    	}
+	    	$res=$this->db->query($q);
+	    	if($res->num_rows()>0){
+	    		return $res->result_array();
+	    	}
+	    	else{
+	    		return false;
+	    	}	
+	    }
 
 
 
@@ -92,6 +136,25 @@
 				return 1;
 			}
 	    }
+
+	    //Show all request Teacher has Recived
+	    public function showRequests($u_email){
+
+	    	$q="select r.*,n.*,s.first_name as sfname,s.last_name as slname,s.type as stype,t.first_name as tfname,t.last_name as tlname,t.type as ttype from notify n JOIN request r on n.req_id=r.id LEFT JOIN students s on r.u_email=s.email LEFT JOIN teachers t on r.u_email=t.email having n.to='$u_email'";
+	    	$res=$this->db->query($q);
+	    	if($res->num_rows()==0){
+	    		return false;
+	    	}else{
+	    		return $res->result_array();
+	    	}
+
+	    }
     }
+
+
+
+
+
+
 ?> 
  

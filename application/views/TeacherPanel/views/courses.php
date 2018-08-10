@@ -1,5 +1,4 @@
 
-   <?php include('header.php');?>
 
 
 
@@ -53,7 +52,7 @@
                         </thead>
                         <tbody>
                             <?php  
-        $query = $this->db->get_where('course_dir', array('teacher_id' => $user_id));
+        $query = $this->db->get_where('course_dir', array('teacher_id' => $_SESSION['user_id']));
          foreach ($query->result() as $row)
         {
 
@@ -90,4 +89,3 @@
 
    
 
-   <?php include('footer.php');?>

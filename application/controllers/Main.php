@@ -11,6 +11,10 @@ public function __construct(){
     $this->load->model('user_model'); //loading user_model
         $this->load->library('session');
         
+        //Library to Load Header+Content+Footer Dynamically, So Use this
+        $this->load->library('loadviewteacher');
+                $this->load->library('loadviewstudent');
+
  
 }
 public function index()
@@ -147,10 +151,11 @@ if(!is_dir($structure) && !is_dir($thumb_folder)){
 // after login view 
 function user_profile($type){
   if($type==0){
- $this->load->view('StudentPanel/views/courses.php');
+  $this->loadviewstudent->load_view('StudentPanel/views/courses.php');
+
  }
  else{
- $this->load->view('TeacherPanel/views/courses.php');
+ $this->loadviewteacher->load_view('TeacherPanel/views/courses.php');
  }
 }
 

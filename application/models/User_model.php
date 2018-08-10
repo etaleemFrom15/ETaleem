@@ -2,6 +2,7 @@
 class User_model extends CI_model{
  
 
+  //Show All or Specific Catogries
   public function show_cat($cat_id=NULL){
 
     if($cat_id!=NULL){
@@ -30,6 +31,7 @@ class User_model extends CI_model{
   }
   //END
 
+  
  
 
  
