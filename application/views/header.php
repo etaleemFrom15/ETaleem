@@ -34,9 +34,10 @@ $user_lname=$this->session->userdata('user_lname');
 	<!-- Site Title -->
 	<title>eTaleem</title>
 	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-	<script src="<?php echo base_url();?>js/login-register.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>js/vendor/jquery-2.2.4.min.js"></script>
+
+
+
 
 		  
 
