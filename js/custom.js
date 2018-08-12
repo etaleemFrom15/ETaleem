@@ -118,6 +118,7 @@ if(navigator.geolocation)
 		  url: locAPI,
 		  success:function(data){
 		   $("#current-location").val(data.results[0].formatted_address);
+		   $("#location").val(data.results[0].formatted_address);
 		  var location=$("#current-location").val();
 		   alert('Your Current Location is: '+location);
 			var data1 = 'location=' + location;
