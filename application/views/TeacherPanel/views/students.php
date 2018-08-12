@@ -1,4 +1,3 @@
-<?php include('header.php');?>
 
     <div class="app-content content container-fluid">
       <div class="content-wrapper">
@@ -94,4 +93,3 @@
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
-    <?php include('footer.php');?>

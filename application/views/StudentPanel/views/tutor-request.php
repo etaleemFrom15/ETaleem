@@ -1,4 +1,3 @@
-<?php include('header.php');?>
 
 
     <div class="app-content content container-fluid">
@@ -46,34 +45,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Science</td>
-                                <td>Online</td>
-                                <td>Hired</td>
-                                <td><a href="bid-view.html">Closed</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>History</td>
-                                <td>Online</td>
-                                <td>Pending</td>
-                                <td><a href="bid-view.html">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>C++</td>
-                                <td>Online</td>
-                                <td>Pending</td>
-                                <td><a href="bid-view.html">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>JAVA SE</td>
-                                <td>Online</td>
-                                <td>Pending</td>
-                                <td><a href="bid-view.html">View</a></td>
-                            </tr>
+                            <?php foreach($requests as $request){?>
+                                <tr>
+                                    <td><?php echo $request['id']; ?></td>
+                                    <td><?php echo $request['c_name']; ?></td>
+                                    <td><?php echo $request['place']; ?></td>
+                                    <td>Hired</td>
+                                    <td>
+                                        <a href="<?php echo base_url().'StudentPanel/main/bidview/'.$request['id']; ?>">View</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>    
                 </div>
@@ -94,4 +76,3 @@
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
-    <?php include('footer.php');?>

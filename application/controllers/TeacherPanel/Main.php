@@ -4,44 +4,54 @@ class Main extends CI_Controller{
 public function __construct(){
  
         parent::__construct();
-    $this->load->helper('url');
-    
+        $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model("Request_Model");
 
-     
- 
+        //Library to Load Header+Content+Footer Dynamically, So Use this
+        $this->load->library('loadviewteacher');
 }
 
         public function index()
         {
-                $this->load->view('TeacherPanel/views/index.php');
+                $this->loadviewteacher->load_view('TeacherPanel/views/index.php');
         }
 
         public function courses(){
-         $this->load->view('TeacherPanel/views/courses.php');
+            $this->loadviewteacher->load_view("TeacherPanel/views/courses");
         }
 
           public function addcourse(){
-         $this->load->view('TeacherPanel/views/add-course.php');
+         $this->loadviewteacher->load_view('TeacherPanel/views/add-course.php');
         }
          public function courseview(){
-         $this->load->view('TeacherPanel/views/course-view.php');
+            $this->loadviewteacher->load_view('TeacherPanel/views/course-view.php');
         } 
        
         public function addcontent($id){
-         $this->load->view('TeacherPanel/views/add-content.php');
+         $this->loadviewteacher->load_view('TeacherPanel/views/add-content.php');
         } 
         public function classes(){
-                $this->load->view('TeacherPanel/views/classes.php');
-               } 
+            $this->loadviewteacher->load_view('TeacherPanel/views/classes.php');
+       }  
+
         public function requestview(){
-         $this->load->view('TeacherPanel/views/request-view.php');
-               }   
+            $data['requests']=$this->Request_Model->showRequests($_SESSION['user_email']);
+            $data['bids']=$this->Request_Model->getBids();
+            $this->loadviewteacher->load_view('TeacherPanel/views/request-view.php',$data);
+        }
+
+        public function submitBid($req_id){
+            $data['req_id']=$req_id;
+            $data['checkBid']=$this->Request_Model->checkBid($req_id);
+            $this->loadviewteacher->load_view('TeacherPanel/views/submitrequest.php',$data);
+        }
+          
        public function scheduleclasses(){
-                $this->load->view('TeacherPanel/views/scheduled-classes.php');
+                $this->loadviewteacher->load_view('TeacherPanel/views/scheduled-classes.php');
          }            
          public function students(){
-                $this->load->view('TeacherPanel/views/students.php');
+                $this->loadviewteacher->load_view('TeacherPanel/views/students.php');
          }       
         
 }

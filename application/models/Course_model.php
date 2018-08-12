@@ -8,6 +8,26 @@ class Course_model extends CI_Model {
         
     }
 
+    
+    //Online Course Related Methods
+
+
+      //Insert Content into Online Course Table
+      public function insertData($data){
+
+        $this->db->insert("online_course",$data);
+        if($this->db->affected_rows()>0){
+          $c_id=$this->db->insert_id();
+          return $c_id ;
+        }
+        else{
+          return false;
+        }
+      }
+
+
+      //Online Course Related Methods End
+
 //get course directory wise
 public function getcourse($id) {
   if($id != FALSE) {

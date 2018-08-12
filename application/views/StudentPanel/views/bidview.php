@@ -21,19 +21,10 @@
               </div>
             </div>
           
+                  <?php foreach($bids as $bid){ ?>
 
                 <div class="single-commemts">
-                  <?php 
-                      $check=0;
-                      foreach($requests as $request){
-                        if($bids!=false){
-                          foreach($bids as $bid){
-                            if($bid['req_id']==$request['req_id']){
-                              $check=1;
-                            } } 
-                        }
-                        if($check==0){
-                    ?>
+
                     <div class="col-md-2 user">
                       <a href="#">
                         <img src="../app-assets/images/user.png" alt="" />
@@ -42,28 +33,35 @@
                     
 
                     <div class="col-md-10 user-comment">
-                        <a href="#">
-                          <?php if($request['stype']==0){?>
-                            <h4><?php echo $request['sfname']; ?></h4>
-                          <?php } else {?>
-                            <h4><?php echo $request['tfname']; ?></h4>
-                          <?php }?>
-                        </a>
-                        <p><?php echo $request['des']; ?></p>
+                        
+                        <h5>Teacher Name</h5>
+                        <p><?php echo $bid['first_name']; ?></p>
+
                         <h5>Subject</h5>
-                        <p><?php echo $request['c_name']; ?></p>
-                        <h5>Place</h5>
-                        <p><?php echo $request['place']; ?></p>
-                        <a class="comme" href="#">On <?php echo $request['date']; ?></a>
+                        <p><?php echo $bid['c_name']; ?></p>
+                        <h5>Type</h5>
+                        <p><?php echo $bid['place']; ?></p>
+
+                        <h5>Amount</h5>
+                        <p><?php echo $bid['bid'].' RS'; ?></p>
+
+                       
+
                         <div class="user-bwn">
-                          <a href="<?php echo base_url().'TeacherPanel/main/submitBid/'.$request['req_id']; ?>">Submit Proposal</a>
+                          <form action="<?php echo base_url(); ?>Payment_Controller/create_invoice" method="post">
+                            <input type="hidden" value="<?php echo $bid['req_id']; ?>" name="req_id">
+                            <input type="hidden" value="<?php echo $bid['email']; ?>" name="by">
+                            <input class="btn btn-primary" type="submit" value="Accept Bid" name="submit">
+                          </form>
                         </div>
                     </div>
 
                     <div class="clearfix"> </div>
-                    <?php } else{echo "<h5>No Requests</h5>"; } } ?>
 
-                  </div>                              
+                  </div> 
+                  <br><br>
+                  <?php } ?>
+                             
           </div>
         </div>
         <!-- Table head options end -->

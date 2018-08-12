@@ -8,29 +8,36 @@ public function __construct(){
     
         $this->load->library('session');
 
-     
+        $this->load->Model('Request_Model');
+
+        //Library to Load Header+Content+Footer Dynamically, So Use this
+        $this->load->library('loadviewstudent');  
  
 }
 
         public function index()
         {
-                $this->load->view('StudentPanel/views/index.php');
+                $this->loadviewstudent->load_view('StudentPanel/views/index.php');
+
         }
 
+
         public function courses(){
-         $this->load->view('StudentPanel/views/courses.php');
+         $this->loadviewstudent->load_view('StudentPanel/views/courses.php');
         }
-        public function bidview(){
-                $this->load->view('StudentPanel/views/bid-view.php');
+        public function bidview($req_id){
+                $data['bids']=$this->Request_Model->getBids($req_id);
+                $this->loadviewstudent->load_view('StudentPanel/views/bidview.php',$data);
                }
         public function scheduledclasses(){
-                $this->load->view('StudentPanel/views/scheduled-classes.php');
+                $this->loadviewstudent->load_view('StudentPanel/views/scheduled-classes.php');
                }       
         public function tutorRequest(){
-                $this->load->view('StudentPanel/views/tutor-request.php');
+                $data['requests']=$this->Request_Model->showRequest();
+                $this->loadviewstudent->load_view('StudentPanel/views/tutor-request.php',$data);
                }
         public function teachers(){
-        $this->load->view('StudentPanel/views/teachers.php');
+            $this->loadviewstudent->load_view('StudentPanel/views/teachers.php');
          }       
     
         }

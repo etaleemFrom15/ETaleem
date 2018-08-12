@@ -13,7 +13,7 @@
 		public function get_notify($user_email,$notify_id=NULL){
 
 			if($notify_id==NULL){
-				$data=array("to"=>$user_email,"check"=>0);
+				$data=array("to"=>$user_email);
 				$result=$this->db->get_where("notify",$data);
 				return $result->result_array();
 			}

@@ -47,7 +47,7 @@ if(!$user_id){
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/gallery.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/request-view.css">
-
+    <script src="<?php echo base_url();?>js/custom.js"></script>
     <!-- END Custom CSS-->
 
     <!-- Start CDN CSS-->
@@ -80,51 +80,45 @@ if(!$user_id){
           
             <ul class="nav navbar-nav float-xs-right">
              
-              <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="ficon icon-bell4"></i><span class="tag tag-pill tag-default tag-danger tag-default tag-up">5</span></a>
+             <!--Count How Many Uncheck Notifications-->
+             <?php 
+                $count=0;
+                foreach($notifications as $notify){
+                  if($notify['check']==0){
+                    $count++;
+                  }
+                }
+              ?>
+
+              <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="ficon icon-bell4"></i><span class="tag tag-pill tag-default tag-danger tag-default tag-up"><?php echo $count;?></span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                   <li class="dropdown-menu-header">
-                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span><span class="notification-tag tag tag-default tag-danger float-xs-right m-0">5 New</span></h6>
+
+                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span>
+                    </h6>
+
                   </li>
+
                   <li class="list-group scrollable-container"><a href="javascript:void(0)" class="list-group-item">
-                      <div class="media">
-                        <div class="media-left valign-middle"><i class="icon-cart3 icon-bg-circle bg-cyan"></i></div>
-                        <div class="media-body">
-                          <h6 class="media-heading">You have new order!</h6>
-                          <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p><small>
-                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">30 minutes ago</time></small>
+
+                      <?php foreach($notifications as $notify){?>
+                        
+                      <a href="<?php echo base_url()."TeacherPanel/main/submitBid/".$notify['req_id']; ?>">
+                          <div class="media">
+                          <div class="media-left valign-middle"><i class="icon-monitor3 icon-bg-circle bg-red bg-darken-1"></i></div>
+                          <div class="media-body">
+                              <p class="notification-text font-small-3 text-muted">
+                                <?php echo $notify['notification']; ?>.
+                              </p>
+                          </div>
                         </div>
-                      </div></a><a href="javascript:void(0)" class="list-group-item">
-                      <div class="media">
-                        <div class="media-left valign-middle"><i class="icon-monitor3 icon-bg-circle bg-red bg-darken-1"></i></div>
-                        <div class="media-body">
-                          <h6 class="media-heading red darken-1">99% Server load</h6>
-                          <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p><small>
-                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">Five hour ago</time></small>
-                        </div>
-                      </div></a><a href="javascript:void(0)" class="list-group-item">
-                      <div class="media">
-                        <div class="media-left valign-middle"><i class="icon-server2 icon-bg-circle bg-yellow bg-darken-3"></i></div>
-                        <div class="media-body">
-                          <h6 class="media-heading yellow darken-3">Warning notifixation</h6>
-                          <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p><small>
-                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">Today</time></small>
-                        </div>
-                      </div></a><a href="javascript:void(0)" class="list-group-item">
-                      <div class="media">
-                        <div class="media-left valign-middle"><i class="icon-check2 icon-bg-circle bg-green bg-accent-3"></i></div>
-                        <div class="media-body">
-                          <h6 class="media-heading">Complete the task</h6><small>
-                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">Last week</time></small>
-                        </div>
-                      </div></a><a href="javascript:void(0)" class="list-group-item">
-                      <div class="media">
-                        <div class="media-left valign-middle"><i class="icon-bar-graph-2 icon-bg-circle bg-teal"></i></div>
-                        <div class="media-body">
-                          <h6 class="media-heading">Generate monthly report</h6><small>
-                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">Last month</time></small>
-                        </div>
-                      </div></a></li>
-                  <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all notifications</a></li>
+                      </a>
+                        <hr>
+
+                      <?php } ?>
+
+
+                  <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-tem text-muted text-xs-center"></a></li>
                 </ul>
               </li>
         
@@ -178,11 +172,13 @@ if(!$user_id){
             <i class="icon-video-camera2"></i>
             <span data-i18n="nav.dash.main" class="menu-title">Class Schedule</span>
             </a></li>
+
             <li class=" nav-item">
             <a href="<?php echo site_url('TeacherPanel/main/requestview');?>">
-            <i class="far fa-address-card"></i>
-<span data-i18n="nav.dash.main" class="menu-title">Request View</span>
+            <i class="icon-video-camera2"></i>
+              <span data-i18n="nav.dash.main" class="menu-title">Course Requests</span>
             </a></li>
+
             </ul>
           </div>
       <!-- /main menu content-->
