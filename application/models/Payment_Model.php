@@ -51,6 +51,41 @@ class Payment_Model extends CI_Model{
 			return false;
 		}
 	}
+
+	//Show Paid Invoices List
+	public function showPaid(){
+
+		$u_email=$_SESSION['user_email'];
+
+		$q="select * from invoice_online i JOIN online_course c on i.Course_Id=c.id having c.t_email='$u_email' AND i.Paid='yes'";
+
+		$res=$this->db->query($q);
+		if($res->num_rows()>0){
+			return $res->result_array();
+		}
+		else{
+			return false;
+		}
+	}
+
+	//Show All Paid Invoice Online Of Logged In Student
+	//Show Paid Invoices List
+	public function show_paid_invoice(){
+
+		$u_id=$_SESSION['user_id'];
+		$u_type=$_SESSION['user_type'];
+
+		$q="select * from invoice_online where Student_Id='$u_id' AND type='$u_type' AND paid='yes'";
+
+		$res=$this->db->query($q);
+		if($res->num_rows()>0){
+			return $res->result_array();
+		}
+		else{
+			return false;
+		}
+	}
+
 }
 
 ?>

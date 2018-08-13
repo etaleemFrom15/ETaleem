@@ -161,17 +161,23 @@ if(!$user_id){
                 <span data-i18n="nav.dash.main" class="menu-title">Students</span>
               </a>
           </li>
+
           <li class=" nav-item">
-              <a href="<?php echo site_url('TeacherPanel/main/classes');?>">
+            <a href="<?php echo site_url('TeacherPanel/main/schedule_new_class');?>">
+            <i class="icon-video-camera2"></i>
+            <span data-i18n="nav.dash.main" class="menu-title">Schedule a Class</span>
+            </a>
+          </li>
+
+
+          <li class=" nav-item">
+              <a href="<?php echo site_url('TeacherPanel/main/scheduled_classes');?>">
                 <i class="icon-book"></i>
-                <span data-i18n="nav.dash.main" class="menu-title">Classes</span>
+                <span data-i18n="nav.dash.main" class="menu-title">Scheduled Classes</span>
               </a>
           </li>
-          <li class=" nav-item">
-            <a href="<?php echo site_url('TeacherPanel/main/scheduleclasses');?>">
-            <i class="icon-video-camera2"></i>
-            <span data-i18n="nav.dash.main" class="menu-title">Class Schedule</span>
-            </a></li>
+
+
 
             <li class=" nav-item">
             <a href="<?php echo site_url('TeacherPanel/main/requestview');?>">

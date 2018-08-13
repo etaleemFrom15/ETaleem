@@ -1,4 +1,3 @@
-<?php include('header.php');?>
 
     <div class="app-content content container-fluid">
       <div class="content-wrapper">
@@ -29,6 +28,7 @@
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<div class="card">
+				<?php if($paid_invoices!=false){?>
 				<div class="card-header">
 					<h4 class="card-title" id="basic-layout-card-center">Schedule</h4>
 					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
@@ -38,25 +38,32 @@
 						<form class="form">
 							<div class="form-body">
                   <div class="form-group">
-											<label for="projectinput5">Course</label>
-											<select id="projectinput5" name="interested" class="form-control">
+											<label for="projectinput5">Courses</label>
+											<select onchange="check_class()" id="c_id" name="interested" class="form-control">
 												<option value="none" selected="" disabled="">--Select Course--</option>
-												<option value="design">design</option>
-												<option value="development">development</option>
-												<option value="illustration">illustration</option>
-												<option value="branding">branding</option>
-												<option value="video">video</option>
+												<?php foreach($paid_invoices as $paid_invoice){?>
+
+
+												<option value="<?php echo $paid_invoice['Course_Id'];?>"><?php echo $paid_invoice['c_name']; ?></option>
+
+
+												<option id='<?php echo "c_name".$paid_invoice['Course_Id'];?>' style="display: none"><?php echo $paid_invoice['c_name'];?></option>
+
+												<?php } ?>
+
+
+
 											</select>
                     </div>
                     
                     <div class="form-group">
 											<label for="issueinput3">Date</label>
-											<input type="date" id="issueinput3" class="form-control" name="date" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Date">
+											<input type="date" id="date" class="form-control" name="date" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Date">
                     </div>
                     <div class="form-group">
 											<label for="timesheetinput5">Start Time</label>
 											<div class="position-relative has-icon-left">
-												<input type="time" id="timesheetinput5" class="form-control" name="starttime">
+												<input type="time" id="s_time" class="form-control" name="starttime">
 												<div class="form-control-position">
 													<i class="icon-clock5"></i>
 												</div>
@@ -65,28 +72,40 @@
                     <div class="form-group">
 											<label for="timesheetinput5">End Time</label>
 											<div class="position-relative has-icon-left">
-												<input type="time" id="timesheetinput5" class="form-control" name="endtime">
+												<input type="time" id="e_time" class="form-control" name="endtime">
 												<div class="form-control-position">
 													<i class="icon-clock5"></i>
 												</div>
 											</div>
 										</div>
+										<input type="hidden" value="<?php echo base_url(); ?>" id="base_url">
                   <div class="form-group">
 									
 								</div>
 							</div>
 
 							<div class="form-actions center">
-								<button type="button" class="btn btn-warning mr-1">
-									<i class="icon-cross2"></i> Cancel
-								</button>
-								<button type="submit" class="btn btn-primary">
-									<i class="icon-check2"></i> Add
-								</button>
+								
+								<button type="button" onclick="schedule_class()" class="btn btn-primary">
+									<i class="icon-check2"></i> Schedule Class								</button>
 							</div>
 						</form>
+						<div class="alert alert-success" style="display: none">
+							Class Has been Schduled
+						</div>
+
+						<div class="alert alert-danger" style="display: none">
+							
+						</div>
+
 					</div>
 				</div>
+				<?php } else{ ?>
+					<div class="card-header">
+					<h4 class="card-title" id="basic-layout-card-center">No student has hired you for online class</h4>
+					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+				</div>
+			<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -97,5 +116,3 @@
     </div>
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
-
-  <?php include('footer.php');?>

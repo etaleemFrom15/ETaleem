@@ -51,6 +51,7 @@ if(!$user_id){
     <!-- END Custom CSS-->
     <!-- Start CDN CSS-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="<?php echo base_url();?>js/custom.js"></script>
     <!-- END CDN CSS-->
     <style>
     #footer {
@@ -146,14 +147,20 @@ if(!$user_id){
                 <span data-i18n="nav.dash.main" class="menu-title">Teachers</span>
               </a>
           </li>
-          <li class=" nav-item"><a href="<?php echo site_url('StudentPanel/main/scheduledclasses');?>">
-            <i class="icon-video-camera2"></i>
-            <span data-i18n="nav.dash.main" class="menu-title">Class Schedule</span>
-            </a></li>  
+          
             <li class=" nav-item">
               <a href="<?php echo site_url('StudentPanel/main/tutorRequest');?>"><i class="icon-users2"></i>
               <span data-i18n="nav.dash.main" class="menu-title">Tutor Requests</span>
-              </a></li>
+              </a>
+            </li>
+
+            <li class=" nav-item">
+              <a href="<?php echo site_url('StudentPanel/main/live_classes');?>"><i class="icon-users2"></i>
+              <span data-i18n="nav.dash.main" class="menu-title">Scheduled Classes</span>
+              </a>
+            </li>
+
+            
 
 
             </ul>

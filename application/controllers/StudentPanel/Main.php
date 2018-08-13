@@ -9,6 +9,10 @@ public function __construct(){
         $this->load->library('session');
 
         $this->load->Model('Request_Model');
+        $this->load->Model('Live_Class_Model');
+        $this->load->Model('Payment_Model');
+
+
 
         //Library to Load Header+Content+Footer Dynamically, So Use this
         $this->load->library('loadviewstudent');  
@@ -38,7 +42,14 @@ public function __construct(){
                }
         public function teachers(){
             $this->loadviewstudent->load_view('StudentPanel/views/teachers.php');
-         }       
+         } 
+
+         public function live_classes(){
+            $data['classes']=$this->Live_Class_Model->live_classes();
+            $data['invoice_online']=$this->Payment_Model->show_paid_invoice();
+            $this->loadviewstudent->load_view('StudentPanel/views/live-classes.php',$data);
+
+         }      
     
         }
         ?>

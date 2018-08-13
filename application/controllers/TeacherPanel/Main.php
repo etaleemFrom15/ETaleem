@@ -7,6 +7,10 @@ public function __construct(){
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model("Request_Model");
+        $this->load->model("Payment_Model");
+        $this->load->model("Live_Class_Model");
+
+
 
         //Library to Load Header+Content+Footer Dynamically, So Use this
         $this->load->library('loadviewteacher');
@@ -30,10 +34,7 @@ public function __construct(){
        
         public function addcontent($id){
          $this->loadviewteacher->load_view('TeacherPanel/views/add-content.php');
-        } 
-        public function classes(){
-            $this->loadviewteacher->load_view('TeacherPanel/views/classes.php');
-       }  
+        }   
 
         public function requestview(){
             $data['requests']=$this->Request_Model->showRequests($_SESSION['user_email']);
@@ -47,12 +48,35 @@ public function __construct(){
             $this->loadviewteacher->load_view('TeacherPanel/views/submitrequest.php',$data);
         }
           
-       public function scheduleclasses(){
-                $this->loadviewteacher->load_view('TeacherPanel/views/scheduled-classes.php');
-         }            
+        public function schedule_new_class(){
+
+            $data['paid_invoices']=$this->Payment_Model->showPaid();
+            $this->loadviewteacher->load_view('TeacherPanel/views/schedule-new-class.php',$data);
+
+        }           
          public function students(){
                 $this->loadviewteacher->load_view('TeacherPanel/views/students.php');
-         }       
+         } 
+
+         //Insert Data into Live Class Table
+         public function schedule_class(){
+            $check=$this->Live_Class_Model->schedule_class();
+            echo $check;
+         }    
+
+         //Check if class is scheduled or not
+         public function check_schedule_class(){
+          $check=$this->Live_Class_Model->check_class();
+            echo $check;
+         } 
+
+         //List of schedule classes by teacher
+         public function scheduled_classes(){
+
+              $data['scheduled_classes']=$this->Live_Class_Model->scheduled_class();
+              $this->loadviewteacher->load_view('TeacherPanel/views/scheduled-classes.php',$data);
+        } 
+ 
         
 }
 

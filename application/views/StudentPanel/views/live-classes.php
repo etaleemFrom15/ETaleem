@@ -39,8 +39,7 @@
             </div>
 
             <div class="card-body collapse in">
-              <?php if($scheduled_classes!=false){?>
-
+              <?php if($classes!=false){?>
                 <div class="table-responsive">
                     <table id="course-table" class="table">
                         <thead class="thead-inverse">
@@ -53,33 +52,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach($scheduled_classes as $s_class){?>
+                          <?php 
+                            foreach($classes as $class){
+                              foreach ($invoice_online as $invoice) {
+                                if($class['course_id']==$invoice['Course_Id']){
+                            ?>
                             <tr>
-                              <td id="c_name<?php echo $s_class['cid']; ?>"><?php echo $s_class['c_name']; ?></td>
-                              <td><?php echo $s_class['start_time']; ?></td>
-                              <td><?php echo $s_class['end_time']; ?></td>
-                              <td><?php echo $s_class['date']; ?></td>
+                              <td id="c_name<?php echo $class['cid']; ?>"><?php echo $class['c_name']; ?></td>
+                              <td><?php echo $class['start_time']; ?></td>
+                              <td><?php echo $class['end_time']; ?></td>
+                              <td><?php echo $class['date']; ?></td>
 
-                              <td id="t_id<?php echo $s_class['cid']; ?>" style="display: none">
-                                <?php echo (int) $_SESSION['user_id']."1" ?>
+                              <td id="s_id<?php echo $class['cid']; ?>" style="display: none">
+                                <?php echo (int) $_SESSION['user_id']."0" ?>
                                   
                               </td>
 
-                              <td id="userName<?php echo $s_class['cid']; ?>" style="display: none">
+                              <td id="userName<?php echo $class['cid']; ?>" style="display: none">
                                 <?php echo $_SESSION['user_fname']; ?>
                                   
                               </td>
 
+
                               <td>
-                                  
-                                  <?php 
+                                <?php 
                                     date_default_timezone_set("Asia/Karachi");
                                     $current_date=date('Y-m-d');
-                                    if($current_date==$s_class['date']){
+                                    if($current_date==$class['date']){
 
                                       $current_time=date("h:ia");
-                                      if($current_time>=$s_class['start_time'] AND $current_time<$s_class['end_time'] ){
-                                        echo "<button id='".$s_class['cid']."' onclick='launch_class(this.id)' class='btn btn-sm btn-primary'>Launch</a>";
+                                      if($current_time>=$class['start_time'] AND $current_time<$class['end_time'] ){
+                                        echo "<button id='".$class['cid']."' onclick='join_class(this.id)' class='btn btn-sm btn-primary'>Join</a>";
                                       }
                                       else{
                                         echo "Wait";
@@ -87,15 +90,17 @@
                                     }
                                     
                                   ?>
+
                               </td>
                             </tr>
-                          <?php } ?>
+                          <?php break; } }} ?>
                         </tbody>
                     </table>    
                 </div>
               <?php } else {?>
-              <p>You Have Not Scheduled Any Class</p>
-             <?php } ?>
+                <p>None Of your Teacher Has Scheduled Any Class</p>
+              <?php } ?>
+              
             </div>
         </div>
     </div>
