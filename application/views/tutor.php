@@ -30,7 +30,16 @@
 				<a class="navbar-brand js-scroll-trigger" href="#page-top">
 				  <span class="d-block d-lg-none">Start Bootstrap</span>
 				  <span class="d-none d-lg-block">
-					<img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo base_url();?>img/blank-profile.png" alt="">
+					<?php
+						 if($prof_pic!=null && $prof_pic!=" "){
+							echo "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src=".base_url().$prof_pic." alt='prof-pic'>
+							";
+						 }
+						 else{
+                   echo "<img class='img-fluid img-profile rounded-circle mx-auto mb-2' src=".base_url()."img/blank-profile.png alt='prof-pic'>
+									 ";
+						 }
+						  ?>
 				  </span>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

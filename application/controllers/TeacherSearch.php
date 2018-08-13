@@ -56,7 +56,9 @@ public function __construct(){
                $data['lname'] =$teacher['last_name'];
                $data['email'] =$teacher['email'];
                $data['address']=$teacher['address'];
-               $data['mob_numb']=$teacher['mobile_no'];  
+               $data['mob_numb']=$teacher['mobile_no']; 
+               $data['prof_pic']=$teacher['t_pic'];  
+ 
 
                $this->load->view('tutor.php',$data);  
         }

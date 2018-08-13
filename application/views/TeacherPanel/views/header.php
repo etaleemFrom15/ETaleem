@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <?php
+
 $user_id=$this->session->userdata('user_id');
 $user_fname=$this->session->userdata('user_fname');
 $user_lname=$this->session->userdata('user_lname');
+
 
 
  
@@ -122,8 +124,20 @@ if(!$user_id){
                 </ul>
               </li>
         
-              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?php echo base_url();?>TeacherPanel/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name"><?php echo $user_fname." ".$user_lname;?></span></a>
-                <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a><a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a><a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
+              <li class="dropdown dropdown-user nav-item">
+              
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link">
+              <span class="avatar avatar-online">
+              <?php if($profilepic->t_pic!=null && $profilepic->t_pic!=" "){
+            echo "<img src=".base_url().$profilepic->t_pic." alt='avatar'><i></i></span>";
+}
+                  else{
+
+                echo "<img src=".base_url()."TeacherPanel/app-assets/images/portrait/small/avatar-s-1.png alt='avatar'><i></i></span>";
+
+                  }?>
+              <span class="user-name"><?php echo $user_fname." ".$user_lname;?></span></a>
+                <div class="dropdown-menu dropdown-menu-right"><a href="<?php echo site_url('TeacherPanel/main/editprofile');?>" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a><a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a><a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
                   <div class="dropdown-divider"></div><a href="#" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
                 </div>
               </li>

@@ -31,6 +31,19 @@ class User_model extends CI_model{
   }
   //END
 
+  //show profile picture
+  
+  public function show_profilepic(){
+   
+    $user_email=$this->session->userdata('user_email');
+    $query="Select t_pic from teachers where email='$user_email'";
+    $result=$this->db->query($query);
+    return $result->row();
+
+   
+  }
+  //END
+
   
  
 
@@ -84,6 +97,28 @@ else{
 
  
 }
+
+//
+public function EditProfile($data){
+  //get bill entries 
+  $count = count($data['count']);
+  
+
+  for($i = 0; $i<$count; $i++){
+  $entries[] = array(
+  'company_name'=>$data['company'][$i],
+  'position'=>$data['position'][$i],
+  'from_year'=>$data['fromyr'][$i],
+  'to_year'=>$data['toyr'][$i],
+  'tid'=>$data['userid'][$i]
+  );
+  }
+  $this->db->insert_batch('teacher_experience', $entries); 
+  if($this->db->affected_rows() > 0)
+  return 1;
+  else
+  return 0;
+  }
  
  
 }

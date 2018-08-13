@@ -6,6 +6,7 @@ public function __construct(){
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model("User_model");
         $this->load->model("Request_Model");
         $this->load->model("Payment_Model");
         $this->load->model("Live_Class_Model");
@@ -20,7 +21,12 @@ public function __construct(){
         {
                 $this->loadviewteacher->load_view('TeacherPanel/views/index.php');
         }
-
+        
+        
+        public function editprofile()
+        {
+                $this->loadviewteacher->load_view('TeacherPanel/views/edit-profile.php');
+        }
         public function courses(){
             $this->loadviewteacher->load_view("TeacherPanel/views/courses");
         }
