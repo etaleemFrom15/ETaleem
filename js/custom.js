@@ -95,19 +95,24 @@ $('input:radio[name="searchby"]').change(function() {
 //Getting Location
 if (this.value == 'curr_loc') {
 
+        getLocation();
 
-if(navigator.geolocation)
-{               var options = {
-				enableHighAccuracy: true,
-						timeout: 5000,
-						   maximumAge: 0
-										  };
-	navigator.geolocation.getCurrentPosition(showPosition,showError,options); 
-}else{
-	alert("Browser not Supporting");
+  }});
 
-}}
-  });
+ function getLocation(){
+
+	if(navigator.geolocation)
+	{               var options = {
+					enableHighAccuracy: true,
+							timeout: 5000,
+							   maximumAge: 0
+											  };
+		navigator.geolocation.getCurrentPosition(showPosition,showError,options); 
+	}else{
+		alert("Browser not Supporting");
+	
+	}
+ } 
 
   function showPosition(position){
 	//  alert("Latitide = "+position.coords.latitude);
@@ -119,8 +124,9 @@ if(navigator.geolocation)
 		  url: locAPI,
 		  success:function(data){
 		   $("#current-location").val(data.results[0].formatted_address);
+		   $("#location").val(data.results[0].formatted_address);
 		  var location=$("#current-location").val();
-		   alert('Your Current Location is: '+location);
+		   //alert('Your Current Location is: '+location);
 			var data1 = 'location=' + location;
   
    $.ajax({
