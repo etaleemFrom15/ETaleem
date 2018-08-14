@@ -79,9 +79,10 @@
                                     date_default_timezone_set("Asia/Karachi");
                                     $current_date=date('Y-m-d');
                                     if($current_date==$class['date']){
-
-                                      $current_time=date("h:ia");
-                                      if($current_time>=$class['start_time'] AND $current_time<$class['end_time'] ){
+                                      $current_time=strtotime(date("h:ia"));
+                                      $start_time=strtotime($class['start_time']);
+                                      $end_time=strtotime($class['end_time']);
+                                      if($current_time>=$start_time AND $current_time<$end_time ){
                                         echo "<button id='".$class['cid']."' onclick='join_class(this.id)' class='btn btn-sm btn-primary'>Join</a>";
                                       }
                                       else{
