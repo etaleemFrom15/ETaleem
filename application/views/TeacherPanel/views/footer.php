@@ -4,16 +4,17 @@
 
     
  <!-- BEGIN VENDOR JS-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <script src="<?php echo base_url();?>TeacherPanel/app-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
+  
+  
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/tether.min.js" type="text/javascript"></script>
-  <script src="<?php echo base_url();?>TeacherPanel/app-assets/js/core/libraries/bootstrap.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/unison.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/blockUI.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/jquery.matchHeight-min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/ui/screenfull.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/extensions/pace.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>js/custom.js"></script>
+
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?php echo base_url();?>TeacherPanel/app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>

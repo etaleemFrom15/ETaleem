@@ -38,14 +38,15 @@ $user_id=$this->session->userdata('user_id');?>
             </div>
             <div class="card-body collapse in">
                 <div class="card-block">
-    <form id="form-submit" class="form" enctype="multipart/form-data">
+    <form id="form_submit"  class="form">
                         
                         <div class="form-body">              
                                 <label>Profile Picture</label>
+                                
                                 <label id="projectinput7" class="file center-block">
                                     <input type="file" name="prof-pic" id="prof-img" >
                                     <span class="file-custom"> 
-                 <img style="border-radius:50%;" id="prof-img-tag" src="<?php echo base_url().'img/blank-profile.png'; ?>" height="210" width="210" /></span>
+                 <img style="border-radius:50%;" id="prof-img-tag" src="<?php echo base_url().$profilepic->t_pic; ?>" height="210" width="210" /></span>
                                 </label>
 
                 		<div class="form-group">
@@ -54,12 +55,12 @@ $user_id=$this->session->userdata('user_id');?>
                         <button class="btn btn-success add_exp_field">Add More Fields &nbsp; <span style="font-size:20px; font-weight:bold;">+ </span></button>
                 <br>
                 <div class="exp-container">
-                <input type="hidden" value="<?php echo $user_id;?>" class="form-control" name="userid[]">
                 <input type="hidden"  class="form-control" name="count[]">
                 <input type="text"  class="form-control" placeholder="Company/Organization Name" name="company[]">
-                 <input type="text"  class="form-control" placeholder="Position" name="postion[]">
+                 <input type="text"  class="form-control" placeholder="Position" name="position[]">
                  <input type="text"  class="form-control" placeholder="From (year)" name="fromyr[]">
                  <input type="text"  class="form-control" placeholder="To (year)" name="toyr[]">
+                 <input type="hidden" value="<?php echo $user_id;?>" class="form-control" name="userid[]">
              </div>
                   </div>           
                             </div>
@@ -87,10 +88,7 @@ $user_id=$this->session->userdata('user_id');?>
 
 
 <?php include('footer.php');?>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -106,7 +104,7 @@ $("#prof-img").change(function(){
     readURL(this);
 
 });
-
+$(document).ready(function (){
  var max_fields      = 10;
         var wrapper         = $(".exp-container");
         var add_button      = $(".add_exp_field");
@@ -116,12 +114,12 @@ $("#prof-img").change(function(){
             e.preventDefault();
             if(x < max_fields){
                 x++;
- $(wrapper).append('<br><div><input type="hidden" value="<?php echo $user_id;?>" class="form-control" name="userid[]">'+
-                     '<input type="hidden"  class="form-control" name="count[]">'+
+ $(wrapper).append('<br><div><input type="hidden"  class="form-control" name="count[]">'+
                      '<input type="text"  class="form-control" placeholder="Company/Organization Name" name="company[]">'+
-                     '<input type="text"  class="form-control" placeholder="Position" name="postion[]">'+
+                     '<input type="text"  class="form-control" placeholder="Position" name="position[]">'+
                      '<input type="text"  class="form-control" placeholder="From (year)" name="fromyr[]">'+
                      '<input type="text"  class="form-control" placeholder="To (year)" name="toyr[]">'+
+                     '<input type="hidden" value="<?php echo $user_id;?>" class="form-control" name="userid[]">'+
                        '<a href="#" class="btn btn-danger delete">Delete</a></div>'); //add input box
             }
       else
@@ -139,20 +137,16 @@ $("#prof-img").change(function(){
              x--;
         });
 
-$("#form-submit").on('submit', function (e) {
+$("#form_submit").on('submit', function (e) {
 e.preventDefault();
 $.ajax({
-url: "<?php echo site_url('TeacherPanel/EditProfile/editprofile');?>",
-type: "POST",
-data: $("#form-submit").serialize()
-}).always(function (response){
-var r = (response.trim());
-if(r == 1){
-$(".alert-success").show();
-}
-else{
-$(".alert-danger").show();
-}
+url: "<?php echo base_url();?>TeacherPanel/EditProfile/updateProfile",
+type: "GET",
+data: $("#form_submit").serialize(),
+success:function(data){
+    alert('Profile Update Successfully!');
+    console.log(data);}
+});
 });
 });      
 </script>

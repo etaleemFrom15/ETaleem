@@ -100,9 +100,8 @@ else{
 
 //
 public function EditProfile($data){
-  //get bill entries 
+  //get exp enteries
   $count = count($data['count']);
-  
 
   for($i = 0; $i<$count; $i++){
   $entries[] = array(
@@ -110,7 +109,7 @@ public function EditProfile($data){
   'position'=>$data['position'][$i],
   'from_year'=>$data['fromyr'][$i],
   'to_year'=>$data['toyr'][$i],
-  'tid'=>$data['userid'][$i]
+  't_id'=>$data['userid'][$i]
   );
   }
   $this->db->insert_batch('teacher_experience', $entries); 

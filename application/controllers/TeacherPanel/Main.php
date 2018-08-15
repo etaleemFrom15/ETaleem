@@ -25,7 +25,12 @@ public function __construct(){
         
         public function editprofile()
         {
-                $this->loadviewteacher->load_view('TeacherPanel/views/edit-profile.php');
+             $data['profilepic']=$this->User_model->show_profilepic();
+            
+              
+             
+            
+                $this->loadviewteacher->load_view('TeacherPanel/views/edit-profile.php',$data);
         }
         public function courses(){
             $this->loadviewteacher->load_view("TeacherPanel/views/courses");

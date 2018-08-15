@@ -5,7 +5,10 @@ public function __construct(){
  
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('form');
+
         $this->load->library('session');
+       
         $this->load->model("User_model");
         $this->load->model("Request_Model");
         $this->load->model("Payment_Model");
@@ -17,6 +20,7 @@ public function __construct(){
         $this->load->library('loadviewteacher');
 
 }
+
 public function EditProfile(){
 
 
@@ -91,7 +95,12 @@ else{
 }
 }
 
-$result = $this->User_model->EditProfile($_POST);
+
+}
+
+public function updateProfile(){
+
+$result = $this->User_model->EditProfile($this->input->get());
 if($result){
 echo 1;
 }
@@ -99,9 +108,7 @@ else{
 echo 0;
 }
 exit;
+
 }
-
-
-
 
 }

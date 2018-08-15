@@ -14,6 +14,9 @@ if(!$user_id){
 }?>
 <html lang="en" data-textdirection="ltr" class="loading">
   <head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -49,7 +52,6 @@ if(!$user_id){
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/gallery.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>TeacherPanel/assets/css/request-view.css">
-    <script src="<?php echo base_url();?>js/custom.js"></script>
     <!-- END Custom CSS-->
 
     <!-- Start CDN CSS-->
