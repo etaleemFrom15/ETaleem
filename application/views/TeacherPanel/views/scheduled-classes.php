@@ -77,8 +77,10 @@
                                     $current_date=date('Y-m-d');
                                     if($current_date==$s_class['date']){
 
-                                      $current_time=date("h:ia");
-                                      if($current_time>=$s_class['start_time'] AND $current_time<$s_class['end_time'] ){
+                                      $current_time=strtotime(date("h:ia"));
+                                      $start_time=strtotime($s_class['start_time']);
+                                      $end_time=strtotime($s_class['end_time']);
+                                      if($current_time>=$start_time AND $current_time<$end_time ){
                                         echo "<button id='".$s_class['cid']."' onclick='launch_class(this.id)' class='btn btn-sm btn-primary'>Launch</a>";
                                       }
                                       else{
