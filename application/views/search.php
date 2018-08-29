@@ -83,8 +83,15 @@ foreach($teacher as $teachers){?>
 							</span>
 					</div>
 					<div>
-						<img class="Simage" src="<?php echo base_url()?>img/blank-profile.png" alt="Avatar">
-				 
+					<?php
+					if($teachers->t_pic!=null && $teachers->t_pic!=" "){
+					echo "<img class='Simage' src=".base_url().$teachers->t_pic." alt='Avatar'>";
+					}
+					else{
+						echo "<img class='Simage' src=".base_url()."img/blank-profile.png alt='prof-pic'>
+										  ";
+							  }
+				?>
 					</div>
 				</div>
 				<div class="col-md-9 SsecondDiv">

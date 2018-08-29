@@ -52,12 +52,15 @@ public function __construct(){
         public function viewProfile($id){
  
                $teacher=$this->TeacherSearch_model->getTeacherProfile($id);
+               $teacherexp=$this->TeacherSearch_model->getTeacherExp($id);
+
                $data['fname']=$teacher['first_name'];
                $data['lname'] =$teacher['last_name'];
                $data['email'] =$teacher['email'];
                $data['address']=$teacher['address'];
                $data['mob_numb']=$teacher['mobile_no']; 
                $data['prof_pic']=$teacher['t_pic'];  
+               $data['experience']=$teacherexp;
  
 
                $this->load->view('tutor.php',$data);  

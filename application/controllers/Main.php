@@ -114,16 +114,14 @@ function login_user(){
 else{
  
     $data=$this->user_model->login_user($user_login['email'],$user_login['password'],'teachers');
-      
- 
-      if($data)
-      {
-          $folder_name=$data['tid'];
-  $structure="./uploads/$folder_name";
-  $thumb_folder=$structure."/thumbnails";
-if(!is_dir($structure) && !is_dir($thumb_folder)){
-   mkdir($structure, 0777, true);
-    mkdir($thumb_folder, 0777, true);
+    if($data)
+      {   
+       $folder_name=$data['tid'];
+       $structure="./uploads/$folder_name";
+       $thumb_folder=$structure."/thumbnails";
+    if(!is_dir($structure) && !is_dir($thumb_folder)){
+       mkdir($structure, 0777, true);
+       mkdir($thumb_folder, 0777, true);
 
    } 
    
